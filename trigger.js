@@ -1,17 +1,17 @@
+ï»¿
 
-
-/* ½«¶ÔÏó´«Èë·â×°·½·¨µÄº¯Êı,ÆäÖĞobj1Îª¶¯»­ÔªËØ£¬obj2Îª´¥·¢Æ÷  */
+/* å°†å¯¹è±¡ä¼ å…¥å°è£…æ–¹æ³•çš„å‡½æ•°,å…¶ä¸­obj1ä¸ºåŠ¨ç”»å…ƒç´ ï¼Œobj2ä¸ºè§¦å‘å™¨  */
 function trigger(obj1,obj2){
-	/* ÉùÃ÷½¥±äÁ¿ */
+	/* å£°æ˜æ¸å˜é‡ */
 	var gradualValue=0;
-	/* ÉùÃ÷½¥±äËÙÂÊ£¬´Ë´¦¿É±ä */
+	/* å£°æ˜æ¸å˜é€Ÿç‡ï¼Œæ­¤å¤„å¯å˜ */
 	var sum=function(speed){
 		gradualValue+=speed;
 	};
-	/* ÉùÃ÷ÑÓ³Ùµ÷ÓÃID */
+	/* å£°æ˜å»¶è¿Ÿè°ƒç”¨ID */
 	var timeroverID=null;
 	var timeroutID=null;
-	/* ½«½¥±äÖµ¸³Öµ¸øÑ¡¶¨µÄ¶ÔÏóÑùÊ½ÊôĞÔ£¬´Ëº¯Êı±í´ïÊ½ÄÚ¿ÉÎªÀ©Õ¹·½·¨µÄÑùÊ½ÊôĞÔ¸³Öµ */
+	/* å°†æ¸å˜å€¼èµ‹å€¼ç»™é€‰å®šçš„å¯¹è±¡æ ·å¼å±æ€§ï¼Œæ­¤å‡½æ•°è¡¨è¾¾å¼å†…å¯ä¸ºæ‰©å±•æ–¹æ³•çš„æ ·å¼å±æ€§èµ‹å€¼ */
 	var property=function(method){
 		switch(method){
 			case "toggleWidth":
@@ -40,7 +40,7 @@ function trigger(obj1,obj2){
 				break;								
 		};		
 	};
-	/* Êó±êÒÆÈë´¦Àí³ÌĞò */
+	/* é¼ æ ‡ç§»å…¥å¤„ç†ç¨‹åº */
     var overProgress=function(Fparas,Lparas,granularity,frequentness,method){
 		return function(){
 			clearTimeout(timeroutID);
@@ -56,7 +56,7 @@ function trigger(obj1,obj2){
 		    }());
         };		
 	};	
-	/* Êó±êÒÆ³ö´¦Àí³ÌĞò */
+	/* é¼ æ ‡ç§»å‡ºå¤„ç†ç¨‹åº */
 	var outProgress=function(Fparas,Lparas,granularity,frequentness,method){
 		return function(){
 			clearTimeout(timeroverID);
@@ -72,7 +72,7 @@ function trigger(obj1,obj2){
 			}());			
 		};
 	};
-	/* Êó±ê´¥·¢´¦Àí³ÌĞò */
+	/* é¼ æ ‡è§¦å‘å¤„ç†ç¨‹åº */
 	var toggleProgress=function(method){
 		return function(Fparas,Lparas,granularity,frequentness){
 		    gradualValue=Fparas;
@@ -82,7 +82,7 @@ function trigger(obj1,obj2){
 	        obj1.onmouseout=outProgress(Fparas,Lparas,granularity,frequentness,method);
 		};
 	};
-	/* ·½·¨¹«¿ª½Ó¿Ú£¬·½·¨¿ÉÀ©Õ¹ */
+	/* æ–¹æ³•å…¬å¼€æ¥å£ï¼Œæ–¹æ³•å¯æ‰©å±• */
 	return {
 		toggleWidth:toggleProgress("toggleWidth"),
 		toggleHeight:toggleProgress("toggleHeight"),
@@ -100,21 +100,21 @@ function trigger(obj1,obj2){
 
 
 /* 
-trigger.jsÓÃ·¨ËµÃ÷:
-trigger()ĞèÒª´«ÈëÁ½¸ö¶ÔÏóobj1¡¢obj2£¬µÚÒ»¸öÊÇĞèÒªÊôĞÔ¸Ä±äµÄÔªËØ£¬µÚ¶ş¸öÊÇ´¥·¢ÔªËØ¡£
-trigger.jsÖ÷ÒªÓÃÓÚÊµÏÖHTMLÖĞÔªËØµÄÊó±êĞüÍ£´¥·¢¶¯Ğ§£¬¿ÉÒÔÎªÔªËØÌí¼ÓÈçÏÂ8ÖÖ·½·¨:
-  1.  toggleHeight() ¡ª¡ª¡ª¡ª ´Ë·½·¨¿ÉÒÔ´¥·¢ÔªËØµÄ¸ß¶ÈÊôĞÔ£»
-  2.  toggleWidth() ¡ª¡ª¡ª¡ª ´Ë·½·¨¿ÉÒÔ´¥·¢ÔªËØµÄ¿í¶ÈÊôĞÔ£»
-  3.  toggleOpacity() ¡ª¡ª¡ª¡ª ´Ë·½·¨¿ÉÒÔ´¥·¢ÔªËØµÄ²»Í¸Ã÷¶ÈÊôĞÔ£»
-  4.  toggle_Opacity() ¡ª¡ª¡ª¡ª ´Ë·½·¨¿ÉÒÔ´¥·¢ÔªËØµÄÍ¸Ã÷¶ÈÊôĞÔ£»
-  5.  toggleMarginLeft() ¡ª¡ª¡ª¡ª ´Ë·½·¨¿ÉÒÔ´¥·¢ÔªËØµÄ×óÍâ±ß¾àÊôĞÔ£»
-  6.  toggleMarginTop() ¡ª¡ª¡ª¡ª ´Ë·½·¨¿ÉÒÔ´¥·¢ÔªËØµÄÉÏÍâ±ß¾àÊôĞÔ£»
-  7.  toggleScale() ¡ª¡ª¡ª¡ª ´Ë·½·¨¿ÉÒÔ´¥·¢ÔªËØµÄÀ©´óÊôĞÔ£»
-  8.  toggleRotate() ¡ª¡ª¡ª¡ª ´Ë·½·¨¿ÉÒÔ´¥·¢ÔªËØµÄĞı×ªÊôĞÔ£»
-  ´Ë8ÖÖ·½·¨¶¼ĞèÒª´«Èë4¸ö²ÎÊı£ºFparas,Lparas,granularity,frequentness£»ÆäÖĞ£¬FparasÎªÊôĞÔ±ä»¯Ç°µÄÖµ£¬LparasÎªÊôĞÔ±ä»¯ºóµÄÖµ£¬granularityÎªÊôĞÔ±ä»¯Á£¶È£¬frequentnessÎªÊôĞÔ±ä»¯µÄÖ¡Ê±³¤¡£
+trigger.jsç”¨æ³•è¯´æ˜:
+trigger()éœ€è¦ä¼ å…¥ä¸¤ä¸ªå¯¹è±¡obj1ã€obj2ï¼Œç¬¬ä¸€ä¸ªæ˜¯éœ€è¦å±æ€§æ”¹å˜çš„å…ƒç´ ï¼Œç¬¬äºŒä¸ªæ˜¯è§¦å‘å…ƒç´ ã€‚
+trigger.jsä¸»è¦ç”¨äºå®ç°HTMLä¸­å…ƒç´ çš„é¼ æ ‡æ‚¬åœè§¦å‘åŠ¨æ•ˆï¼Œå¯ä»¥ä¸ºå…ƒç´ æ·»åŠ å¦‚ä¸‹8ç§æ–¹æ³•:
+  1.  toggleHeight() â€”â€”â€”â€” æ­¤æ–¹æ³•å¯ä»¥è§¦å‘å…ƒç´ çš„é«˜åº¦å±æ€§ï¼›
+  2.  toggleWidth() â€”â€”â€”â€” æ­¤æ–¹æ³•å¯ä»¥è§¦å‘å…ƒç´ çš„å®½åº¦å±æ€§ï¼›
+  3.  toggleOpacity() â€”â€”â€”â€” æ­¤æ–¹æ³•å¯ä»¥è§¦å‘å…ƒç´ çš„ä¸é€æ˜åº¦å±æ€§ï¼›
+  4.  toggle_Opacity() â€”â€”â€”â€” æ­¤æ–¹æ³•å¯ä»¥è§¦å‘å…ƒç´ çš„é€æ˜åº¦å±æ€§ï¼›
+  5.  toggleMarginLeft() â€”â€”â€”â€” æ­¤æ–¹æ³•å¯ä»¥è§¦å‘å…ƒç´ çš„å·¦å¤–è¾¹è·å±æ€§ï¼›
+  6.  toggleMarginTop() â€”â€”â€”â€” æ­¤æ–¹æ³•å¯ä»¥è§¦å‘å…ƒç´ çš„ä¸Šå¤–è¾¹è·å±æ€§ï¼›
+  7.  toggleScale() â€”â€”â€”â€” æ­¤æ–¹æ³•å¯ä»¥è§¦å‘å…ƒç´ çš„æ‰©å¤§å±æ€§ï¼›
+  8.  toggleRotate() â€”â€”â€”â€” æ­¤æ–¹æ³•å¯ä»¥è§¦å‘å…ƒç´ çš„æ—‹è½¬å±æ€§ï¼›
+  æ­¤8ç§æ–¹æ³•éƒ½éœ€è¦ä¼ å…¥4ä¸ªå‚æ•°ï¼šFparas,Lparas,granularity,frequentnessï¼›å…¶ä¸­ï¼ŒFparasä¸ºå±æ€§å˜åŒ–å‰çš„å€¼ï¼ŒLparasä¸ºå±æ€§å˜åŒ–åçš„å€¼ï¼Œgranularityä¸ºå±æ€§å˜åŒ–ç²’åº¦ï¼Œfrequentnessä¸ºå±æ€§å˜åŒ–çš„å¸§æ—¶é•¿ã€‚
 
-Àı£º
-  HTML£º
+ä¾‹ï¼š
+  HTMLï¼š
   <!doctype html>
     <html>
       <head>
@@ -128,7 +128,7 @@ trigger.jsÖ÷ÒªÓÃÓÚÊµÏÖHTMLÖĞÔªËØµÄÊó±êĞüÍ£´¥·¢¶¯Ğ§£¬¿ÉÒÔÎªÔªËØÌí¼ÓÈçÏÂ8ÖÖ·½·¨:
       </body>
     </html>  
   
-  JS£º
+  JSï¼š
   window.onload=function(){
 	test();
   };
