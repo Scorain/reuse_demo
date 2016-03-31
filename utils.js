@@ -203,6 +203,35 @@ var UTILS = (function(){
         }
     })();
 
+    _utils.getParameter = function(param){
+        var reg = new RegExp('[?,&]' + param + '=([^\\&]*)','i'),
+            value = reg.exec( location.search );
+        return value ? value[1] : "";
+    };
+
+    _utils.sessionStorageData = function(key,value){
+        if( !window.sessionStorage ) return null;
+        var getItemValue = function(){
+            var data = sessionStorage.getItem(key);
+            try {
+                data = JSON.parse(data);
+            } catch(e) {
+                console.log(e.message);
+            };
+            return data;
+        };
+        switch( Object.prototype.toString.call(value) ){
+            case '[object Undefined]':
+                return getItemValue();
+            case '[object Null]':
+                sessionStorage.removeItem(key);
+                break;
+            default:
+                sessionStorage.setItem( key,JSON.stringify(value) );
+                break;
+        };
+    };
+
 
 
 
