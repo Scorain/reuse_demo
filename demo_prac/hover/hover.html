@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<title>JavaScript_practice</title>	
+  </head>
+  <body>
+    <ul class="oul_hover">
+	  <li class="inner">
+	    <div></div><span class="outer"></span>
+	  </li>
+	  <li class="inner">
+	    <div></div><span class="outer"></span>
+	  </li>
+	  <li class="inner">
+	    <div></div><span class="outer"></span>
+	  </li>
+	  <li class="inner">
+	    <div></div><span class="outer"></span>
+	  </li>
+	  <li class="inner">
+	    <div></div><span class="outer"></span>
+	  </li>
+	  <li class="inner">
+	    <div></div><span class="outer"></span>
+	  </li> 
+	</ul>
+	<style>
+	  .oul_hover{
+		list-style:none;
+		padding:0px;
+		width:330px;
+		margin:10px auto;
+	  }
+	  .oul_hover li{
+	    width:100px;
+		height:100px;
+		overflow:hidden;
+		float:left;
+		margin:5px;
+		position:relative;
+	  }
+	  .oul_hover div{
+	    width:100px;
+		height:100px;
+		background-color:red;
+	  }
+	  .oul_hover span{
+	    width:100px;
+		height:100px;
+		background-color:blue;
+		position:absolute;
+		top:0px;
+		left:-100px;
+		z-index:1;
+	  }
+	</style>
+	<script src="hover.js"></script>
+  </body>
+</html>
